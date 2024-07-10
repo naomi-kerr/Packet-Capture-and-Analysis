@@ -56,21 +56,21 @@ Start with double clicking the .pcap file to open it with Wireshark as it is the
 In this example, the IP Address `142.250.1.139` is the target. We start by using `ip.addr == 142.250.1.139` to filter for any traffic that involves this IP.
 
 Opening up the first tcp packet, we can view the packet details:
-![screenshot](Packet-Analysis-01.png) 
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2001.png?raw=true) 
 #### Frame
 The frame shows up the timestamps, datestamps, the protocol used, and the port that was used. 
-![screenshot](Packet-Analysis-02.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2002.png?raw=true)
 #### Ethernet II
 The Ethernet II section shows us the MAC addresses are associated with the packet and which Internet Protocol version is being used (IPv4 or IPv6).   
-![screenshot](Packet-Analysis-03.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2003.png?raw=true)
 
 #### IPv4 
 The Internet Protocol version 4 section shows us more details about the packet as well as details we've gotten from other sections, such as Internet protocol version, header length, total length, TTL (time to live), protocol (tcp, udp, etc.) and the source and destination addresses. 
-![screenshot](Packet-Analysis-04.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2004.png?raw=true)
 
 #### Transmission Control Protocol
 The last section to review is the Transmission Control Protocol (TCP) section. In this section we are primarily concerned with the packet header information that we haven't seen in other sections. This includes the source port, sequence number, the flags, checksum, and urgent pointer. 
-![screenshot](Packet-Analysis-05.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2005.png?raw=true)
 
 #### Analysis
 In the packet used above, we see basic http traffic being sent via TCP through port 80 from `172.21.224.2` (a local network address) to `142.250.1.139` (a Google IP address).  
@@ -79,14 +79,14 @@ In the packet used above, we see basic http traffic being sent via TCP through p
 
 #### IP Source & Destination
 Using the filter `ip.src == 142.250.1.139` the packets are filtered to only traffic that is sent by the IP `142.250.1.139`. We can do the same thing for traffic that is direct to `142.250.1.139` with the filter `ip.dst == 142.250.1.139`. 
-![screenshot](Packet-Analysis-06.png)
-![screenshot](Packet-Analysis-07.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2006.png?raw=true)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2007.png?raw=true)
 #### MAC Address
 The filter `eth.addr == 42:01:ac:15:e0:01` is used to filter all traffic that is associated with the MAC address `42:01:ac:15:e0:01`. 
-![screenshot](Packet-Analysis-08.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2008.png?raw=true)
 #### Ports
 Filtering for ports involves using both the protocol and the port that we are interested in filtering for. In this case, we filter for both TCP and UDP traffic over port 80 using `tcp.port == 80 || udp.port == 80`. By using the double pipe "or" operator, the system will return any packets that match TCP traffic over port 80 and any packet that match UDP traffic over port 80. 
-![screenshot](Packet-Analysis-09.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2009.png?raw=true)
 #### String Searches
 Lastly, we can use string searches by using the contains filter. This will return packets that have the specified string within them. In this case, we use `TCP contains "curl"` to find any traffic that was initiated using the `curl` command. 
-![screenshot](Packet-Analysis-10.png)
+![screenshot](https://github.com/naomi-kerr/Packet-Capture-and-Analysis/blob/main/Packet%20Analysis%2010.png?raw=true)
